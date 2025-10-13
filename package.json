@@ -1,0 +1,128 @@
+{
+  "name": "vehicle-spa",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "build:prod": "ng build --configuration production",
+    "watch": "ng build --watch --configuration development",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --coverage --watchAll=false",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "format": "prettier --write \"src/**/*.{ts,html,scss,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,html,scss,json}\"",
+    "commit": "git-cz",
+    "prepare": "husky",
+    "pre-commit": "lint-staged"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup-jest.ts"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.(ts|js)",
+      "**/*.(test|spec).(ts|js)"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/**/*.d.ts",
+      "!src/main.ts",
+      "!src/**/*.module.ts",
+      "!src/**/*.interface.ts",
+      "!src/**/*.model.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "moduleNameMapping": {
+      "@/(.*)": "<rootDir>/src/$1",
+      "@app/(.*)": "<rootDir>/src/app/$1",
+      "@core/(.*)": "<rootDir>/src/app/core/$1",
+      "@shared/(.*)": "<rootDir>/src/app/shared/$1",
+      "@modules/(.*)": "<rootDir>/src/app/modules/$1",
+      "@vehicles/(.*)": "<rootDir>/src/app/modules/vehicles/$1",
+      "@environments/(.*)": "<rootDir>/src/environments/$1"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,html,scss,json}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^20.3.4",
+    "@angular/cdk": "^20.2.8",
+    "@angular/common": "^20.3.0",
+    "@angular/compiler": "^20.3.0",
+    "@angular/core": "^20.3.0",
+    "@angular/forms": "^20.3.0",
+    "@angular/material": "^20.2.8",
+    "@angular/platform-browser": "^20.3.0",
+    "@angular/router": "^20.3.0",
+    "@ngrx/effects": "^20.0.1",
+    "@ngrx/entity": "^20.0.1",
+    "@ngrx/store": "^20.0.1",
+    "@ngrx/store-devtools": "^20.0.1",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.3.5",
+    "@angular/cli": "^20.3.5",
+    "@angular/compiler-cli": "^20.3.0",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@types/jasmine": "~5.1.0",
+    "@types/jest": "^30.0.0",
+    "angular-eslint": "20.4.0",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.37.0",
+    "husky": "^9.1.7",
+    "jasmine-core": "~5.9.0",
+    "jest": "^30.2.0",
+    "jest-preset-angular": "^15.0.2",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "lint-staged": "^16.2.4",
+    "prettier": "^3.6.2",
+    "typescript": "~5.9.2",
+    "typescript-eslint": "8.46.0"
+  }
+}
