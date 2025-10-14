@@ -4,13 +4,21 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
-    "types": [
-      "jest",
-      "node"
-    ],
-    "esModuleInterop": true
+    "types": ["jest", "node"],
+    "esModuleInterop": true,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],
+      "@app/*": ["app/*"],
+      "@core/*": ["app/core/*"],
+      "@shared/*": ["app/shared/*"],
+      "@modules/*": ["app/modules/*"],
+      "@vehicles/*": ["app/modules/vehicles/*"],
+      "@vehicles/data-access/*": ["app/modules/vehicles/data-access/*"],
+      "@vehicles/ui/*": ["app/modules/vehicles/ui/*"],
+      "@environments/*": ["environments/*"],
+      "@styles/*": ["styles/*"]
+    }
   },
-  "include": [
-    "src/**/*.ts"
-  ]
+  "include": ["src/**/*.ts"]
 }

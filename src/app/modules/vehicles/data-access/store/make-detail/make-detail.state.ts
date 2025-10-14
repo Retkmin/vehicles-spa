@@ -1,5 +1,5 @@
-import { VehicleModel } from '../../../domain/models/vehicle-model.model';
-import { VehicleType } from '../../../domain/models/vehicle-type.model';
+import { VehicleModel } from '@vehicles/domain/models/vehicle-model.model';
+import { VehicleType } from '@vehicles/domain/models/vehicle-type.model';
 
 export interface MakeDetailState {
   models: VehicleModel[];

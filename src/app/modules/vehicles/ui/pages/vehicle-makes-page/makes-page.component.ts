@@ -10,8 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { MakesFacade } from '../../../data-access/facades/makes.facade';
-import { VehicleMake } from '../../../domain/models/vehicle-make.model';
+import { MakesFacade } from '@vehicles/data-access/facades/makes.facade';
+import { VehicleMake } from '@vehicles/domain/models/vehicle-make.model';
 import { VehiclesUiCardComponent } from '@shared/components/vehicles-ui-card/vehicles-ui-card.component';
 
 @Component({
@@ -28,10 +28,10 @@ import { VehiclesUiCardComponent } from '@shared/components/vehicles-ui-card/veh
     MatFormFieldModule,
     FormsModule,
     TranslateModule,
-    VehiclesUiCardComponent
+    VehiclesUiCardComponent,
   ],
   templateUrl: './makes-page.component.html',
-  styleUrl: './makes-page.component.scss'
+  styleUrl: './makes-page.component.scss',
 })
 export class MakesPageComponent implements OnInit {
   private static readonly VIRTUAL_SCROLL_ITEM_HEIGHT = 120;

@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { VehiclesState } from '../store';
-import * as MakesActions from '../store/makes/makes.actions';
-import * as MakesSelectors from '../store/makes/makes.selectors';
-import { VehicleMake } from '../../domain/models/vehicle-make.model';
+import { VehiclesState } from '@vehicles/data-access/store';
+import * as MakesActions from '@vehicles/data-access/store/makes/makes.actions';
+import * as MakesSelectors from '@vehicles/data-access/store/makes/makes.selectors';
+import { VehicleMake } from '@vehicles/domain/models/vehicle-make.model';
 
 @Injectable({ providedIn: 'root' })
 export class MakesFacade {

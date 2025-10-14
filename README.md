@@ -190,7 +190,11 @@ This project is developed as a technical assessment for GT Motive.
 
 ---
 
+## Conventional Commits
+
+This project uses the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) standard for commit messages. See the official website for format and examples.
+
+
+---
+
 **Developed by**: Dario Alejandre Rodenas
-**Project Type**: Technical Assessment
-**Company**: GT Motive
-**Framework**: Angular 20

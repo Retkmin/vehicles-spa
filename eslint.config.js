@@ -14,6 +14,22 @@ module.exports = tseslint.config(
     ],
     processor: angular.processInlineTemplates,
     rules: {
+        'no-restricted-imports': [
+          'error',
+          {
+            patterns: [
+              {
+                group: [
+                  '../*',
+                  '../../*',
+                  '../../../*',
+                  '../../../../*'
+                ],
+                message: 'Use import aliases defined in tsconfig (e.g., @shared, @core, @modules) instead of relative imports.'
+              }
+            ]
+          }
+        ],
       "@angular-eslint/directive-selector": [
         "error",
         {

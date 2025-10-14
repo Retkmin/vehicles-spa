@@ -64,7 +64,16 @@
       "@modules/(.*)": "<rootDir>/src/app/modules/$1",
       "@vehicles/(.*)": "<rootDir>/src/app/modules/vehicles/$1",
       "@environments/(.*)": "<rootDir>/src/environments/$1"
-    }
+    },
+    "coveragePathIgnorePatterns": [
+      "/app.config.ts$",
+      "/app.routes.ts$",
+      "/vehicles.routes.ts$",
+      "/environment.ts$",
+      "/index.ts$",
+      "/api.config.ts$",
+      "/test-helpers.ts$"
+    ]
   },
   "lint-staged": {
     "*.{ts,html,scss,json}": [
@@ -125,6 +134,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "lint-staged": "^16.2.4",
     "prettier": "^3.6.2",
+    "rxjs-marbles": "^7.0.1",
     "typescript": "~5.9.2",
     "typescript-eslint": "8.46.0"
   }
