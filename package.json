@@ -56,7 +56,7 @@
         "statements": 80
       }
     },
-    "moduleNameMapping": {
+    "moduleNameMapper": {
       "@/(.*)": "<rootDir>/src/$1",
       "@app/(.*)": "<rootDir>/src/app/$1",
       "@core/(.*)": "<rootDir>/src/app/core/$1",
@@ -94,8 +94,9 @@
     "@angular/router": "^20.3.0",
     "@ngrx/effects": "^20.0.1",
     "@ngrx/entity": "^20.0.1",
-    "@ngrx/store": "^20.0.1",
     "@ngrx/store-devtools": "^20.0.1",
+    "@ngx-translate/core": "^17.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -105,6 +106,7 @@
     "@angular/compiler-cli": "^20.3.0",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
+    "@ngrx/store": "^20.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "^30.0.0",
     "angular-eslint": "20.4.0",
@@ -114,6 +116,7 @@
     "husky": "^9.1.7",
     "jasmine-core": "~5.9.0",
     "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "jest-preset-angular": "^15.0.2",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

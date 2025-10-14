@@ -1,0 +1,56 @@
+<div class="makes-container">
+  <div class="header">
+    <div class="header-actions">
+      <button mat-icon-button (click)="goBack()" class="back-button" [attr.aria-label]="'common.back' | translate">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <h1>{{ 'makes.title' | translate }}</h1>
+    </div>
+
+    <div class="search-section">
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>{{ 'makes.search' | translate }}</mat-label>
+        <input
+          matInput
+          [value]="(searchTerm$ | async) || ''"
+          (input)="onSearchChange($event.target.value || '')"
+          (keydown.enter)="onSearchChange($event.target.value || '')"
+          [placeholder]="'makes.placeholder' | translate">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+  </div>
+
+  @if (loading$ | async) {
+    <div class="loading-container">
+      <mat-spinner></mat-spinner>
+      <p>{{ 'makes.loading' | translate }}</p>
+    </div>
+  } @else if (filteredMakes$ | async; as filteredMakes) {
+    @if (filteredMakes.length > 0) {
+      <div class="makes-content">
+        <div class="results-info">
+          <p>{{ 'makes.results' | translate: {count: filteredMakes.length, total: (makes$ | async)?.length || 0} }}</p>
+        </div>
+
+        <cdk-virtual-scroll-viewport
+          [itemSize]="itemHeight"
+          class="makes-viewport">
+          <div *cdkVirtualFor="let make of filteredMakes; trackBy: trackByMakeId" class="make-item">
+            <app-vehicles-ui-card
+              [title]="make.makeName"
+              [subtitle]="('makeDetail.id' | translate: {id: make.makeId})"
+              [clickable]="true"
+              [type]="'make'"
+              (click)="viewMakeDetails(make)">
+            </app-vehicles-ui-card>
+          </div>
+        </cdk-virtual-scroll-viewport>
+      </div>
+    } @else {
+      <div class="no-results">
+        <h3>{{ 'makes.noResults.title' | translate }}</h3>
+      </div>
+    }
+  }
+</div>

@@ -1,12 +1,12 @@
 <div class="make-detail-container">
   <div class="header">
     <div class="header-actions">
-      <button mat-icon-button (click)="goBack()" class="back-button" aria-label="Go back">
+  <button mat-icon-button (click)="goBack()" class="back-button" [attr.aria-label]="'makeDetail.back' | translate">
         <mat-icon>arrow_back</mat-icon>
       </button>
       <div class="make-info">
-        <h1>{{ makeName() }}</h1>
-        <p class="make-subtitle">Make ID: {{ makeId() }}</p>
+  <h1>{{ makeName }}</h1>
+  <p class="make-subtitle">{{ 'makeDetail.id' | translate: {id: makeId} }}</p>
       </div>
     </div>
   </div>
@@ -17,53 +17,32 @@
       <!-- Models Tab -->
       <mat-tab label="Models">
         <div class="tab-content">
-          @if (loadingModels()) {
-            <div class="loading-container">
-              <mat-spinner></mat-spinner>
-              <p>Loading models...</p>
-            </div>
-          } @else if (errorModels()) {
-            <div class="error-container">
-              <mat-icon class="error-icon">error</mat-icon>
-              <h3>Error Loading Models</h3>
-              <p>{{ errorModels() }}</p>
-              <button mat-raised-button color="primary" (click)="retryModels()">
-                <mat-icon>refresh</mat-icon>
-                Try Again
-              </button>
+          @let models = models$ | async;
+          @if ((models?.length ?? 0) === 0) {
+            <div class="no-data">
+              <h3>{{ 'makeDetail.models.noData.title' | translate }}</h3>
+              <p>{{ 'makeDetail.models.noData.message' | translate: {makeName: makeName} }}</p>
             </div>
           } @else {
             <div class="models-section">
               <div class="section-header">
-                <h2>Available Models</h2>
-                <p>{{ models().length }} models found</p>
+                <h2>{{ 'makeDetail.models.title' | translate }}</h2>
+                <p>{{ 'makeDetail.models.count' | translate: {count: models?.length ?? 0} }}</p>
               </div>
-
-              @if (models().length === 0) {
-                <div class="no-data">
-                  <mat-icon class="no-data-icon">inventory_2</mat-icon>
-                  <h3>No Models Available</h3>
-                  <p>No models found for {{ makeName() }}</p>
+              <cdk-virtual-scroll-viewport
+                [itemSize]="itemHeight"
+                class="models-viewport">
+                <div class="cards-list">
+                  @for (model of models; track trackByModelId($index, model)) {
+                    <app-vehicles-ui-card
+                      [title]="model.modelName"
+                      [subtitle]="('makeDetail.id' | translate: {id: model.modelId})"
+                      [type]="'model'"
+                      [clickable]="false">
+                    </app-vehicles-ui-card>
+                  }
                 </div>
-              } @else {
-                <cdk-virtual-scroll-viewport
-                  [itemSize]="itemHeight"
-                  class="models-viewport">
-                  <div *cdkVirtualFor="let modelRow of modelRows(); trackBy: trackByRowIndex; let i = index"
-                       class="models-row">
-                    <div class="row-grid">
-                      @for (model of modelRow; track trackByModelId($index, model)) {
-                        <mat-card class="item-card">
-                          <mat-card-header>
-                            <mat-card-title>{{ model.modelName }}</mat-card-title>
-                            <mat-card-subtitle>Model ID: {{ model.modelId }}</mat-card-subtitle>
-                          </mat-card-header>
-                        </mat-card>
-                      }
-                    </div>
-                  </div>
-                </cdk-virtual-scroll-viewport>
-              }
+              </cdk-virtual-scroll-viewport>
             </div>
           }
         </div>
@@ -72,53 +51,31 @@
       <!-- Vehicle Types Tab -->
       <mat-tab label="Vehicle Types">
         <div class="tab-content">
-          @if (loadingTypes()) {
-            <div class="loading-container">
-              <mat-spinner></mat-spinner>
-              <p>Loading vehicle types...</p>
-            </div>
-          } @else if (errorTypes()) {
-            <div class="error-container">
-              <mat-icon class="error-icon">error</mat-icon>
-              <h3>Error Loading Vehicle Types</h3>
-              <p>{{ errorTypes() }}</p>
-              <button mat-raised-button color="primary" (click)="retryTypes()">
-                <mat-icon>refresh</mat-icon>
-                Try Again
-              </button>
+          @let types = vehicleTypes$ | async;
+          @if ((types?.length ?? 0) === 0) {
+            <div class="no-data">
+              <h3>{{ 'makeDetail.types.noData.title' | translate }}</h3>
+              <p>{{ 'makeDetail.types.noData.message' | translate: {makeName: makeName} }}</p>
             </div>
           } @else {
             <div class="types-section">
               <div class="section-header">
-                <h2>Available Vehicle Types</h2>
-                <p>{{ vehicleTypes().length }} types found</p>
+                <h2>{{ 'makeDetail.types.title' | translate }}</h2>
+                <p>{{ 'makeDetail.types.count' | translate: {count: types?.length ?? 0} }}</p>
               </div>
-
-              @if (vehicleTypes().length === 0) {
-                <div class="no-data">
-                  <mat-icon class="no-data-icon">directions_car</mat-icon>
-                  <h3>No Vehicle Types Available</h3>
-                  <p>No vehicle types found for {{ makeName() }}</p>
+              <cdk-virtual-scroll-viewport
+                [itemSize]="itemHeight"
+                class="types-viewport">
+                <div class="cards-list">
+                  @for (type of types; track trackByTypeId($index, type)) {
+                    <app-vehicles-ui-card
+                      [title]="type.typeName"
+                      [subtitle]="('makeDetail.id' | translate: {id: type.typeId})"
+                      [clickable]="false">
+                    </app-vehicles-ui-card>
+                  }
                 </div>
-              } @else {
-                <cdk-virtual-scroll-viewport
-                  [itemSize]="itemHeight"
-                  class="types-viewport">
-                  <div *cdkVirtualFor="let typeRow of vehicleTypeRows(); trackBy: trackByRowIndex; let i = index"
-                       class="types-row">
-                    <div class="row-grid">
-                      @for (type of typeRow; track trackByTypeId($index, type)) {
-                        <mat-card class="item-card">
-                          <mat-card-header>
-                            <mat-card-title>{{ type.typeName }}</mat-card-title>
-                            <mat-card-subtitle>Type ID: {{ type.typeId }}</mat-card-subtitle>
-                          </mat-card-header>
-                        </mat-card>
-                      }
-                    </div>
-                  </div>
-                </cdk-virtual-scroll-viewport>
-              }
+              </cdk-virtual-scroll-viewport>
             </div>
           }
         </div>

@@ -1,0 +1,95 @@
+{
+  "dashboard": {
+    "title": "Panel de Información de Vehículos",
+    "subtitle": "Explora fabricantes y marcas de vehículos usando datos de NHTSA",
+    "manufacturers": {
+      "title": "Fabricantes de Vehículos",
+      "description": "Navega por todos los fabricantes de vehículos con información detallada",
+      "details": "Explora una lista completa de fabricantes de vehículos de todo el mundo. Ve información detallada de empresas incluyendo tipos de negocio, detalles de contacto y capacidades de manufactura.",
+      "button": "Ver Fabricantes",
+      "stats": {
+        "companies": "Empresas mundiales",
+        "profiles": "Perfiles detallados"
+      }
+    },
+    "makes": {
+      "title": "Marcas y Modelos de Vehículos",
+      "description": "Descubre marcas, modelos y tipos de vehículos",
+      "details": "Navega a través de miles de marcas de vehículos y explora sus modelos disponibles y tipos de vehículos. Busca y filtra para encontrar marcas específicas o descubrir nuevas.",
+      "button": "Ver Marcas y Modelos",
+      "stats": {
+        "count": "11,000+ marcas",
+        "types": "Modelos y tipos"
+      }
+    },
+    "about": {
+      "title": "Acerca de este Panel",
+      "description": "Este panel proporciona acceso a información completa de vehículos proporcionada por la base de datos de la Administración Nacional de Seguridad del Tráfico en Carreteras (NHTSA). Explora detalles de fabricantes, marcas de vehículos, modelos y especificaciones técnicas.",
+      "features": {
+        "search": "Búsqueda Avanzada",
+        "scrolling": "Scroll Virtual",
+        "responsive": "Diseño Responsivo",
+        "realtime": "Datos en Tiempo Real"
+      }
+    }
+  },
+  "manufacturers": {
+    "title": "Fabricantes de Vehículos",
+    "loading": "Cargando fabricantes iniciales...",
+    "error": "Error al cargar los fabricantes"
+  },
+  "makes": {
+    "title": "Marcas de Vehículos",
+    "search": "Buscar marcas...",
+    "placeholder": "Escribe para buscar marcas",
+    "loading": "Cargando marcas de vehículos...",
+    "error": "Error al Cargar Marcas",
+    "retry": "Intentar de Nuevo",
+    "results": "{{count}} de {{total}} marcas encontradas",
+    "noResults": {
+      "title": "No se encontraron marcas",
+      "message": "No hay marcas que coincidan con tu búsqueda \"{{term}}\"",
+      "general": "No hay marcas de vehículos disponibles en este momento"
+    }
+  },
+  "makeDetail": {
+    "title": "{{makeName}}",
+    "id": "ID de Marca: {{id}}",
+    "tabs": {
+      "models": "Modelos",
+      "types": "Tipos de Vehículos"
+    },
+    "models": {
+      "title": "Modelos Disponibles",
+      "count": "{{count}} modelos encontrados",
+      "loading": "Cargando modelos...",
+      "error": "Error al Cargar Modelos",
+      "retry": "Intentar de Nuevo",
+      "noData": {
+        "title": "No Hay Modelos Disponibles",
+        "message": "No se encontraron modelos para {{makeName}}"
+      }
+    },
+    "types": {
+      "title": "Tipos de Vehículos Disponibles",
+      "count": "{{count}} tipos encontrados",
+      "loading": "Cargando tipos de vehículos...",
+      "error": "Error al Cargar Tipos de Vehículos",
+      "retry": "Intentar de Nuevo",
+      "noData": {
+        "title": "No Hay Tipos de Vehículos Disponibles",
+        "message": "No se encontraron tipos de vehículos para {{makeName}}"
+      }
+    }
+  },
+  "common": {
+    "back": "Atrás",
+    "dashboard": "Panel",
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "search": "Buscar",
+    "viewDetails": "Ver Detalles",
+    "refresh": "Actualizar"
+  }
+}
