@@ -1,0 +1,95 @@
+{
+  "dashboard": {
+    "title": "Vehicle Information Dashboard",
+    "subtitle": "Explore vehicle manufacturers and brands using NHTSA data",
+    "manufacturers": {
+      "title": "Vehicle Manufacturers",
+      "description": "Browse all vehicle manufacturers with detailed information",
+      "details": "Explore a comprehensive list of vehicle manufacturers from around the world. View detailed company information including business types, contact details, and manufacturing capabilities.",
+      "button": "View Manufacturers",
+      "stats": {
+        "companies": "Companies worldwide",
+        "profiles": "Detailed profiles"
+      }
+    },
+    "makes": {
+      "title": "Vehicle Makes & Models",
+      "description": "Discover vehicle brands, models, and types",
+      "details": "Browse through thousands of vehicle makes (brands) and explore their available models and vehicle types. Search and filter to find specific brands or discover new ones.",
+      "button": "View Makes & Models",
+      "stats": {
+        "count": "11,000+ makes",
+        "types": "Models & types"
+      }
+    },
+    "about": {
+      "title": "About This Dashboard",
+      "description": "This dashboard provides access to comprehensive vehicle information powered by the National Highway Traffic Safety Administration (NHTSA) database. Explore manufacturer details, vehicle brands, models, and technical specifications.",
+      "features": {
+        "search": "Advanced Search",
+        "scrolling": "Virtual Scrolling",
+        "responsive": "Responsive Design",
+        "realtime": "Real-time Data"
+      }
+    }
+  },
+  "manufacturers": {
+    "title": "Vehicle Manufacturers",
+    "loading": "Loading initial manufacturers...",
+    "error": "Error loading the manufacturers"
+  },
+  "makes": {
+    "title": "Vehicle Makes",
+    "search": "Search makes...",
+    "placeholder": "Type to search makes",
+    "loading": "Loading vehicle makes...",
+    "error": "Error Loading Makes",
+    "retry": "Try Again",
+    "results": "{{count}} of {{total}} makes found",
+    "noResults": {
+      "title": "No makes found",
+      "message": "No makes match your search \"{{term}}\"",
+      "general": "No vehicle makes available at the moment"
+    }
+  },
+  "makeDetail": {
+    "title": "{{makeName}}",
+    "id": "Make ID: {{id}}",
+    "tabs": {
+      "models": "Models",
+      "types": "Vehicle Types"
+    },
+    "models": {
+      "title": "Available Models",
+      "count": "{{count}} models found",
+      "loading": "Loading models...",
+      "error": "Error Loading Models",
+      "retry": "Try Again",
+      "noData": {
+        "title": "No Models Available",
+        "message": "No models found for {{makeName}}"
+      }
+    },
+    "types": {
+      "title": "Available Vehicle Types",
+      "count": "{{count}} types found",
+      "loading": "Loading vehicle types...",
+      "error": "Error Loading Vehicle Types",
+      "retry": "Try Again",
+      "noData": {
+        "title": "No Vehicle Types Available",
+        "message": "No vehicle types found for {{makeName}}"
+      }
+    }
+  },
+  "common": {
+    "back": "Back",
+    "dashboard": "Dashboard",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "search": "Search",
+    "viewDetails": "View Details",
+    "refresh": "Refresh"
+  }
+}

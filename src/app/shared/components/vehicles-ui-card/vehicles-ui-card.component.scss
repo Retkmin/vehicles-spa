@@ -1,0 +1,37 @@
+
+.vehicles-ui-card {
+  margin-bottom: var(--spacing-md);
+  cursor: default;
+  transition: all var(--transition-normal);
+  background-color: var(--color-background-card);
+  border-radius: var(--border-radius-lg);
+
+  &.clickable {
+    cursor: pointer;
+    &:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .mat-mdc-card-header {
+    padding: var(--spacing-lg);
+  }
+
+  .mat-mdc-card-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+  }
+
+  .mat-mdc-card-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-top: var(--spacing-xs);
+    line-height: var(--line-height-normal);
+  }
+}
