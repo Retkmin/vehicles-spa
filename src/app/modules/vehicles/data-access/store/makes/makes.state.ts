@@ -1,4 +1,4 @@
-import { VehicleMake } from '../../../domain/models/vehicle-make.model';
+import { VehicleMake } from '@vehicles/domain/models/vehicle-make.model';
 
 export interface MakesState {
   makes: VehicleMake[];
@@ -21,5 +21,5 @@ export const initialMakesState: MakesState = {
   searchTerm: '',
   currentPage: 1,
   hasMorePages: true,
-  totalCount: 0
+  totalCount: 0,
 };

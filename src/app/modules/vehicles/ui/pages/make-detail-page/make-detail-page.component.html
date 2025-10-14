@@ -1,19 +1,23 @@
 <div class="make-detail-container">
   <div class="header">
     <div class="header-actions">
-  <button mat-icon-button (click)="goBack()" class="back-button" [attr.aria-label]="'makeDetail.back' | translate">
+      <button
+        mat-icon-button
+        (click)="goBack()"
+        class="back-button"
+        [attr.aria-label]="'makeDetail.back' | translate"
+      >
         <mat-icon>arrow_back</mat-icon>
       </button>
       <div class="make-info">
-  <h1>{{ makeName }}</h1>
-  <p class="make-subtitle">{{ 'makeDetail.id' | translate: {id: makeId} }}</p>
+        <h1>{{ 'makeDetail.title' | translate }}</h1>
+        <p class="make-subtitle">{{ 'makeDetail.id' | translate: { id: makeId } }}</p>
       </div>
     </div>
   </div>
 
   <div class="content-tabs">
     <mat-tab-group animationDuration="300ms">
-
       <!-- Models Tab -->
       <mat-tab label="Models">
         <div class="tab-content">
@@ -21,24 +25,23 @@
           @if ((models?.length ?? 0) === 0) {
             <div class="no-data">
               <h3>{{ 'makeDetail.models.noData.title' | translate }}</h3>
-              <p>{{ 'makeDetail.models.noData.message' | translate: {makeName: makeName} }}</p>
+              <p>{{ 'makeDetail.models.noData.message' | translate: { makeName: makeName } }}</p>
             </div>
           } @else {
             <div class="models-section">
               <div class="section-header">
                 <h2>{{ 'makeDetail.models.title' | translate }}</h2>
-                <p>{{ 'makeDetail.models.count' | translate: {count: models?.length ?? 0} }}</p>
+                <p>{{ 'makeDetail.models.count' | translate: { count: models?.length ?? 0 } }}</p>
               </div>
-              <cdk-virtual-scroll-viewport
-                [itemSize]="itemHeight"
-                class="models-viewport">
+              <cdk-virtual-scroll-viewport [itemSize]="itemHeight" class="models-viewport">
                 <div class="cards-list">
                   @for (model of models; track trackByModelId($index, model)) {
                     <app-vehicles-ui-card
                       [title]="model.modelName"
-                      [subtitle]="('makeDetail.id' | translate: {id: model.modelId})"
+                      [subtitle]="'makeDetail.id' | translate: { id: model.modelId }"
                       [type]="'model'"
-                      [clickable]="false">
+                      [clickable]="false"
+                    >
                     </app-vehicles-ui-card>
                   }
                 </div>
@@ -55,23 +58,22 @@
           @if ((types?.length ?? 0) === 0) {
             <div class="no-data">
               <h3>{{ 'makeDetail.types.noData.title' | translate }}</h3>
-              <p>{{ 'makeDetail.types.noData.message' | translate: {makeName: makeName} }}</p>
+              <p>{{ 'makeDetail.types.noData.message' | translate: { makeName: makeName } }}</p>
             </div>
           } @else {
             <div class="types-section">
               <div class="section-header">
                 <h2>{{ 'makeDetail.types.title' | translate }}</h2>
-                <p>{{ 'makeDetail.types.count' | translate: {count: types?.length ?? 0} }}</p>
+                <p>{{ 'makeDetail.types.count' | translate: { count: types?.length ?? 0 } }}</p>
               </div>
-              <cdk-virtual-scroll-viewport
-                [itemSize]="itemHeight"
-                class="types-viewport">
+              <cdk-virtual-scroll-viewport [itemSize]="itemHeight" class="types-viewport">
                 <div class="cards-list">
                   @for (type of types; track trackByTypeId($index, type)) {
                     <app-vehicles-ui-card
                       [title]="type.typeName"
-                      [subtitle]="('makeDetail.id' | translate: {id: type.typeId})"
-                      [clickable]="false">
+                      [subtitle]="'makeDetail.id' | translate: { id: type.typeId }"
+                      [clickable]="false"
+                    >
                     </app-vehicles-ui-card>
                   }
                 </div>
@@ -80,7 +82,6 @@
           }
         </div>
       </mat-tab>
-
     </mat-tab-group>
   </div>
 </div>

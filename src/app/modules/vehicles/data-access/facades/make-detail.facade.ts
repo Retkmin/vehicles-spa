@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { VehiclesState } from '../store/vehicles-state';
-import { VehicleModel } from '../../domain/models/vehicle-model.model';
-import { VehicleType } from '../../domain/models/vehicle-type.model';
+import { VehiclesState } from '@vehicles/data-access/store/vehicles-state';
+import { VehicleModel } from '@vehicles/domain/models/vehicle-model.model';
+import { VehicleType } from '@vehicles/domain/models/vehicle-type.model';
 import {
   loadMakeDetail,
   selectModels,
@@ -11,8 +11,8 @@ import {
   selectLoadingModels,
   selectLoadingTypes,
   selectErrorModels,
-  selectErrorTypes
-} from '../store/make-detail';
+  selectErrorTypes,
+} from '@vehicles/data-access/store/make-detail';
 
 @Injectable({ providedIn: 'root' })
 export class MakeDetailFacade {
@@ -28,5 +28,4 @@ export class MakeDetailFacade {
   loadMakeDetail(makeId: number): void {
     this.store.dispatch(loadMakeDetail({ makeId }));
   }
-
 }

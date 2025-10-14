@@ -4,13 +4,17 @@ import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { API_CONFIG } from '@core/config/api.config';
-import { VehicleMake } from '../../domain/models/vehicle-make.model';
-import { VehicleModel } from '../../domain/models/vehicle-model.model';
-import { VehicleType } from '../../domain/models/vehicle-type.model';
-import { NHTSAMakesResponse, NHTSAModelsResponse, NHTSAVehicleTypesResponse } from '../dtos/vehicle-catalog';
+import { VehicleMake } from '@vehicles/domain/models/vehicle-make.model';
+import { VehicleModel } from '@vehicles/domain/models/vehicle-model.model';
+import { VehicleType } from '@vehicles/domain/models/vehicle-type.model';
+import {
+  NHTSAMakesResponse,
+  NHTSAModelsResponse,
+  NHTSAVehicleTypesResponse,
+} from '@vehicles/data-access/dtos/vehicle-catalog';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VehiclesApiService {
   private static readonly NHTSA_PAGE_OFFSET = 1;
@@ -25,16 +29,16 @@ export class VehiclesApiService {
     const url = `${API_CONFIG.NHTSA.BASE_URL}/GetAllMakes?format=json`;
 
     return this.http.get<NHTSAMakesResponse>(url).pipe(
-      map(response => {
-        return response.Results?.map(make => ({
+      map((response) => {
+        return response.Results?.map((make) => ({
           makeId: make.Make_ID,
-          makeName: make.Make_Name
-        })) || [];
+          makeName: make.Make_Name,
+        }));
       }),
-      catchError(error => {
-        console.error('Error fetching makes:', error);
+      catchError((error) => {
+        console.warn('Error fetching makes:', error);
         return of([]);
-      })
+      }),
     );
   }
 
@@ -45,16 +49,16 @@ export class VehiclesApiService {
     const url = `${API_CONFIG.NHTSA.BASE_URL}/GetModelsForMake/${encodeURIComponent(makeName)}?format=json`;
 
     return this.http.get<NHTSAModelsResponse>(url).pipe(
-      map(response => {
-        return response.Results?.map(model => ({
+      map((response) => {
+        return response.Results?.map((model) => ({
           modelId: model.Model_ID,
-          modelName: model.Model_Name
-        })) || [];
+          modelName: model.Model_Name,
+        }));
       }),
-      catchError(error => {
-        console.error('Error fetching models for make:', error);
+      catchError((error) => {
+        console.warn('Error fetching models for make:', error);
         return of([]);
-      })
+      }),
     );
   }
 
@@ -65,17 +69,16 @@ export class VehiclesApiService {
     const url = `${API_CONFIG.NHTSA.BASE_URL}/GetVehicleTypesForMake/${encodeURIComponent(makeName)}?format=json`;
 
     return this.http.get<NHTSAVehicleTypesResponse>(url).pipe(
-      map(response => {
-        return response.Results?.map(type => ({
+      map((response) => {
+        return response.Results?.map((type) => ({
           typeId: type.VehicleTypeId,
-          typeName: type.VehicleTypeName
-        })) || [];
+          typeName: type.VehicleTypeName,
+        }));
       }),
-      catchError(error => {
-        console.error('Error fetching vehicle types for make:', error);
+      catchError((error) => {
+        console.warn('Error fetching vehicle types for make:', error);
         return of([]);
-      })
+      }),
     );
   }
-
 }

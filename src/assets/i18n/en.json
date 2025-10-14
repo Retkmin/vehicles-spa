@@ -53,7 +53,7 @@
     }
   },
   "makeDetail": {
-    "title": "{{makeName}}",
+    "title": "Makes detail",
     "id": "Make ID: {{id}}",
     "tabs": {
       "models": "Models",

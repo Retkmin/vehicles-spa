@@ -1,43 +1,43 @@
 import { provideZonelessChangeDetection, Provider, EnvironmentProviders } from '@angular/core';
-import { provideRouter } from '@angular/router';
 import { provideMockStore } from '@ngrx/store/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 /**
  * Common providers for testing in a zoneless Angular app
  */
-export const commonTestProviders: (Provider | EnvironmentProviders)[] = [
-  provideZonelessChangeDetection(),
-  provideRouter([]),
-  provideMockStore()
-];
+export function getCommonTestProviders(
+  initialState?: Record<string, unknown>,
+): (Provider | EnvironmentProviders)[] {
+  return [provideZonelessChangeDetection(), provideMockStore({ initialState })];
+}
 
 /**
  * Common imports for testing Angular components
  */
-export const commonTestImports = [
-  TranslateModule.forRoot()
-];
+export const commonTestImports = [CommonModule, FormsModule, TranslateModule.forRoot()];
 
 /**
  * Get providers array with common testing setup and additional providers
  */
-export function getTestProviders(...additionalProviders: (Provider | EnvironmentProviders)[]): (Provider | EnvironmentProviders)[] {
-  return [
-    ...commonTestProviders,
-    ...additionalProviders
-  ];
+export function getTestProviders(
+  initialState?: Record<string, unknown>,
+  ...additionalProviders: (Provider | EnvironmentProviders)[]
+): (Provider | EnvironmentProviders)[] {
+  return [...getCommonTestProviders(initialState), ...additionalProviders];
 }
 
 /**
  * Get complete testing configuration with common imports and providers
  */
-export function getTestConfig(additionalImports: unknown[] = [], additionalProviders: (Provider | EnvironmentProviders)[] = []) {
+export function getTestConfig(
+  additionalImports: unknown[] = [],
+  additionalProviders: (Provider | EnvironmentProviders)[] = [],
+  initialState?: Record<string, unknown>,
+) {
   return {
-    imports: [
-      ...commonTestImports,
-      ...additionalImports
-    ],
-    providers: getTestProviders(...additionalProviders)
+    imports: [...commonTestImports, ...additionalImports],
+    providers: getTestProviders(initialState, ...additionalProviders),
   };
 }
