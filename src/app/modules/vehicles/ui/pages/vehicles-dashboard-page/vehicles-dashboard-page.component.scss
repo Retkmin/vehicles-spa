@@ -1,0 +1,250 @@
+// Dashboard page styles using global CSS custom properties
+
+.dashboard-container {
+  padding: var(--spacing-xl);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--color-background) 0%, var(--color-background-secondary) 100%);
+
+  .header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+
+    h1 {
+      margin: 0 0 var(--spacing-md) 0;
+      color: var(--color-text-primary);
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--line-height-tight);
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-normal);
+    }
+  }
+
+  .dashboard-content {
+    .navigation-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: var(--spacing-xl);
+      margin-bottom: var(--spacing-3xl);
+
+      .navigation-card {
+        background-color: var(--color-background-card);
+        transition: var(--transition-normal);
+        border: var(--border-width) var(--border-style) transparent;
+        min-height: 320px;
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-lg);
+          border-color: var(--color-primary);
+        }
+
+        &.manufacturers-card {
+          &:hover {
+            border-color: var(--color-primary);
+          }
+
+          mat-card-header mat-icon {
+            color: var(--color-primary);
+            background-color: var(--color-primary-light);
+          }
+        }
+
+        &.makes-card {
+          &:hover {
+            border-color: var(--color-accent);
+          }
+
+          mat-card-header mat-icon {
+            color: var(--color-accent);
+            background-color: var(--color-accent-light);
+          }
+        }
+
+        mat-card-header {
+          mat-icon {
+            width: 3rem;
+            height: 3rem;
+            font-size: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          mat-card-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-xs);
+          }
+
+          mat-card-subtitle {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+          }
+        }
+
+        mat-card-content {
+          padding-top: var(--spacing-lg);
+
+          p {
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-lg);
+          }
+
+          .stats {
+            display: flex;
+            gap: var(--spacing-lg);
+
+            .stat-item {
+              display: flex;
+              align-items: center;
+              gap: var(--spacing-sm);
+              color: var(--color-text-secondary);
+              font-size: var(--font-size-sm);
+
+              mat-icon {
+                font-size: 1.2rem;
+                width: 1.2rem;
+                height: 1.2rem;
+                color: var(--color-primary);
+              }
+            }
+          }
+        }
+
+        mat-card-actions {
+          padding-top: var(--spacing-lg);
+
+          button {
+            font-weight: var(--font-weight-medium);
+          }
+        }
+      }
+    }
+
+    .info-section {
+      .info-card {
+        background-color: var(--color-background-card);
+        border: var(--border-width) var(--border-style) var(--color-border);
+
+        mat-card-header {
+          mat-icon {
+            color: var(--color-info);
+            background-color: var(--color-info-light);
+            width: 2.5rem;
+            height: 2.5rem;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          mat-card-title {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-primary);
+          }
+        }
+
+        mat-card-content {
+          padding-top: var(--spacing-lg);
+
+          p {
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-lg);
+          }
+
+          .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+
+            .feature {
+              display: flex;
+              align-items: center;
+              gap: var(--spacing-sm);
+              padding: var(--spacing-sm);
+              background-color: var(--color-background-secondary);
+              border-radius: var(--border-radius);
+              font-size: var(--font-size-sm);
+              color: var(--color-text-secondary);
+
+              mat-icon {
+                font-size: 1.1rem;
+                width: 1.1rem;
+                height: 1.1rem;
+                color: var(--color-primary);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: var(--spacing-lg) var(--spacing-md);
+
+    .header {
+      margin-bottom: var(--spacing-xl);
+
+      h1 {
+        font-size: var(--font-size-2xl);
+      }
+
+      .subtitle {
+        font-size: var(--font-size-base);
+      }
+    }
+
+    .dashboard-content {
+      .navigation-cards {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+
+        .navigation-card {
+          min-height: auto;
+
+          mat-card-content .stats {
+            flex-direction: column;
+            gap: var(--spacing-sm);
+          }
+        }
+      }
+
+      .info-section .info-card {
+        mat-card-content .features-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--spacing-sm);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: var(--spacing-md) var(--spacing-sm);
+
+    .dashboard-content .info-section .info-card {
+      mat-card-content .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

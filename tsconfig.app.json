@@ -13,7 +13,10 @@
       "@shared/*": ["app/shared/*"],
       "@modules/*": ["app/modules/*"],
       "@vehicles/*": ["app/modules/vehicles/*"],
-      "@environments/*": ["environments/*"]
+      "@vehicles/data-access/*": ["app/modules/vehicles/data-access/*"],
+      "@vehicles/ui/*": ["app/modules/vehicles/ui/*"],
+      "@environments/*": ["environments/*"],
+      "@styles/*": ["styles/*"]
     }
   },
   "include": [

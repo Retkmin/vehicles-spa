@@ -1,0 +1,96 @@
+
+.manufacturer-detail-container {
+  padding: var(--spacing-m);
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s);
+    margin-bottom: var(--spacing-l);
+    padding-bottom: var(--spacing-m);
+    border-bottom: 1px solid var(--color-border);
+
+    .back-button { color: var(--color-primary); }
+    h1 {
+      margin: 0;
+      color: var(--color-text-primary);
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-medium);
+    }
+  }
+
+  .loading-container, .error-container, .not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-m);
+    padding: var(--spacing-xl);
+    text-align: center;
+
+    p { color: var(--color-text-secondary); font-size: var(--font-size-md); }
+  }
+
+  .error-icon, .not-found-icon {
+    font-size: 4rem;
+    width: 4rem;
+    height: 4rem;
+    color: var(--color-error);
+  }
+
+  .details-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+
+    .info-card {
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-normal);
+      &:hover { box-shadow: var(--shadow-md); }
+    }
+
+    .info-grid {
+      display: grid;
+      gap: var(--spacing-md);
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+
+      .label {
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        text-transform: uppercase;
+      }
+
+      span, p {
+        color: var(--color-text-primary);
+        font-size: var(--font-size-base);
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .manufacturer-detail-container {
+    padding: var(--spacing-sm);
+    .header h1 { font-size: var(--font-size-lg); }
+    .details-content .info-grid { gap: var(--spacing-sm); }
+  }
+}

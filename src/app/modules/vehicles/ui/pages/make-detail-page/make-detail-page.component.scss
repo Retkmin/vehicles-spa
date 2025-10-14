@@ -1,0 +1,206 @@
+// Make detail page styles using global CSS custom properties
+
+.make-detail-container {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  min-height: 100vh;
+
+  .header {
+    margin-bottom: var(--spacing-xl);
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+
+      .back-button {
+        color: var(--color-primary);
+      }
+
+      .make-info {
+        h1 {
+          margin: 0;
+          color: var(--color-text-primary);
+          font-size: var(--font-size-2xl);
+          font-weight: var(--font-weight-medium);
+          line-height: var(--line-height-tight);
+        }
+
+        .make-subtitle {
+          margin: var(--spacing-xs) 0 0 0;
+          color: var(--color-text-secondary);
+          font-size: var(--font-size-sm);
+        }
+      }
+    }
+  }
+
+  .content-tabs {
+    .tab-content {
+      padding: var(--spacing-lg) 0;
+    }
+
+    .loading-container, .error-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-lg);
+      padding: var(--spacing-3xl);
+      text-align: center;
+
+      p {
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-md);
+        margin: 0;
+      }
+    }
+
+    .error-icon {
+      font-size: 3rem;
+      width: 3rem;
+      height: 3rem;
+      color: var(--color-error);
+    }
+
+    .models-section, .types-section {
+      .section-header {
+        margin-bottom: var(--spacing-lg);
+        padding-bottom: var(--spacing-md);
+        border-bottom: var(--border-width) var(--border-style) var(--color-border);
+
+        h2 {
+          margin: 0 0 var(--spacing-xs) 0;
+          color: var(--color-text-primary);
+          font-size: var(--font-size-xl);
+          font-weight: var(--font-weight-medium);
+        }
+
+        p {
+          margin: 0;
+          color: var(--color-text-secondary);
+          font-size: var(--font-size-sm);
+        }
+      }
+
+      .no-data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-3xl);
+        text-align: center;
+
+        .no-data-icon {
+          font-size: 3rem;
+          width: 3rem;
+          height: 3rem;
+          color: var(--color-text-secondary);
+        }
+
+        h3 {
+          margin: 0;
+          color: var(--color-text-primary);
+          font-size: var(--font-size-lg);
+        }
+
+        p {
+          margin: 0;
+          color: var(--color-text-secondary);
+        }
+      }
+
+      .models-viewport, .types-viewport {
+        height: 800px;
+        width: 100%;
+
+        .models-row, .types-row {
+          height: 140px;
+          padding: var(--spacing-sm);
+
+          .row-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+            height: 100%;
+
+            .item-card {
+              background-color: var(--color-background-card);
+              border: var(--border-width) var(--border-style) var(--color-border);
+              transition: var(--transition-normal);
+
+              &:hover {
+                box-shadow: var(--shadow-md);
+                transform: translateY(-2px);
+              }
+
+              mat-card-header {
+                padding: var(--spacing-md);
+              }
+
+              mat-card-title {
+                font-size: var(--font-size-sm);
+                font-weight: var(--font-weight-medium);
+                color: var(--color-text-primary);
+                line-height: var(--line-height-tight);
+              }
+
+              mat-card-subtitle {
+                font-size: var(--font-size-xs);
+                color: var(--color-text-secondary);
+                margin-top: var(--spacing-xs);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .make-detail-container {
+    padding: var(--spacing-md);
+
+    .header .header-actions .make-info {
+      h1 {
+        font-size: var(--font-size-xl);
+      }
+    }
+
+    .content-tabs .models-section .models-viewport,
+    .content-tabs .types-section .types-viewport {
+      height: 500px; // Increased height on tablet
+
+      .models-row .row-grid,
+      .types-row .row-grid {
+        grid-template-columns: repeat(2, 1fr); // 2 columns on tablet
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .make-detail-container {
+    padding: var(--spacing-sm);
+
+    .header .header-actions {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-sm);
+    }
+
+    .content-tabs .models-section .models-viewport,
+    .content-tabs .types-section .types-viewport {
+      height: 450px; // Good height for mobile devices
+
+      .models-row .row-grid,
+      .types-row .row-grid {
+        grid-template-columns: 1fr; // 1 column on mobile
+        gap: var(--spacing-sm);
+      }
+    }
+  }
+}

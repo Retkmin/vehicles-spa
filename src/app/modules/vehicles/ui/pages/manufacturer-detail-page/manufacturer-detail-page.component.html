@@ -1,0 +1,191 @@
+<div class="manufacturer-detail-container">
+  <div class="header">
+    <button mat-icon-button (click)="goBack()" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Detalles del Fabricante</h1>
+  </div>
+
+  @if (loading()) {
+    <div class="loading-container">
+      <mat-spinner></mat-spinner>
+      <p>Cargando detalles del fabricante...</p>
+    </div>
+  } @else if (error()) {
+    <div class="error-container">
+      <mat-icon class="error-icon">error</mat-icon>
+      <h2>Error</h2>
+      <p>{{ error() }}</p>
+      <button mat-raised-button color="primary" (click)="goBack()">
+        Volver al listado
+      </button>
+    </div>
+  } @else if (manufacturerDetails()) {
+    <div class="details-content">
+      <!-- Información básica -->
+      <mat-card class="info-card">
+        <mat-card-header>
+          <mat-card-title>Información General</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="info-grid">
+            <div class="info-item">
+              <strong class="label">Nombre:</strong>
+              <span>{{ manufacturerDetails()!.name }}</span>
+            </div>
+            @if (manufacturerDetails()!.commonName) {
+              <div class="info-item">
+                <strong class="label">Nombre común:</strong>
+                <span>{{ manufacturerDetails()!.commonName }}</span>
+              </div>
+            }
+            <div class="info-item">
+              <strong class="label">ID:</strong>
+              <span>{{ manufacturerDetails()!.id }}</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Dirección -->
+      <mat-card class="info-card">
+        <mat-card-header>
+          <mat-card-title>Dirección</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="address-info">
+            @if (manufacturerDetails()!.address.street) {
+              <p>{{ manufacturerDetails()!.address.street }}</p>
+            }
+            @if (manufacturerDetails()!.address.street2) {
+              <p>{{ manufacturerDetails()!.address.street2 }}</p>
+            }
+            <p>
+              @if (manufacturerDetails()!.address.city) {
+                <span>{{ manufacturerDetails()!.address.city }}</span>
+              }
+              @if (manufacturerDetails()!.address.stateProvince) {
+                <span>, {{ manufacturerDetails()!.address.stateProvince }}</span>
+              }
+              @if (manufacturerDetails()!.address.postalCode) {
+                <span> {{ manufacturerDetails()!.address.postalCode }}</span>
+              }
+            </p>
+            @if (manufacturerDetails()!.address.country) {
+              <p><strong>{{ manufacturerDetails()!.address.country }}</strong></p>
+            }
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Contacto -->
+      @if (hasContactInfo()) {
+        <mat-card class="info-card">
+          <mat-card-header>
+            <mat-card-title>Información de Contacto</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="info-grid">
+              @if (manufacturerDetails()!.contact.email) {
+                <div class="info-item">
+                  <strong class="label">Email:</strong>
+                  <a href="mailto:{{ manufacturerDetails()!.contact.email }}">
+                    {{ manufacturerDetails()!.contact.email }}
+                  </a>
+                </div>
+              }
+              @if (manufacturerDetails()!.contact.phone) {
+                <div class="info-item">
+                  <strong class="label">Teléfono:</strong>
+                  <a href="tel:{{ manufacturerDetails()!.contact.phone }}">
+                    {{ manufacturerDetails()!.contact.phone }}
+                  </a>
+                </div>
+              }
+              @if (manufacturerDetails()!.contact.fax) {
+                <div class="info-item">
+                  <strong class="label">Fax:</strong>
+                  <span>{{ manufacturerDetails()!.contact.fax }}</span>
+                </div>
+              }
+            </div>
+          </mat-card-content>
+        </mat-card>
+      }
+
+      <!-- Principal -->
+      @if (hasPrincipalInfo()) {
+        <mat-card class="info-card">
+          <mat-card-header>
+            <mat-card-title>Información del Principal</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="info-grid">
+              @if (manufacturerDetails()!.principal.firstName || manufacturerDetails()!.principal.lastName) {
+                <div class="info-item">
+                  <strong class="label">Nombre:</strong>
+                  <span>
+                    {{ manufacturerDetails()!.principal.firstName || '' }}
+                    {{ manufacturerDetails()!.principal.lastName || '' }}
+                  </span>
+                </div>
+              }
+              @if (manufacturerDetails()!.principal.position) {
+                <div class="info-item">
+                  <strong class="label">Posición:</strong>
+                  <span>{{ manufacturerDetails()!.principal.position }}</span>
+                </div>
+              }
+            </div>
+          </mat-card-content>
+        </mat-card>
+      }
+
+      <!-- Información del negocio -->
+      @if (hasBusinessInfo()) {
+        <mat-card class="info-card">
+          <mat-card-header>
+            <mat-card-title>Información del Negocio</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="info-grid">
+              @if (manufacturerDetails()!.businessInfo.primaryProduct) {
+                <div class="info-item">
+                  <strong class="label">Producto principal:</strong>
+                  <span>{{ manufacturerDetails()!.businessInfo.primaryProduct }}</span>
+                </div>
+              }
+              @if (manufacturerDetails()!.businessInfo.dbas) {
+                <div class="info-item">
+                  <strong class="label">DBAs:</strong>
+                  <span>{{ manufacturerDetails()!.businessInfo.dbas }}</span>
+                </div>
+              }
+              @if (manufacturerDetails()!.businessInfo.otherDetails) {
+                <div class="info-item full-width">
+                  <strong class="label">Otros detalles:</strong>
+                  <p>{{ manufacturerDetails()!.businessInfo.otherDetails }}</p>
+                </div>
+              }
+            </div>
+          </mat-card-content>
+        </mat-card>
+      }
+
+      @if (manufacturerDetails()!.lastUpdated) {
+        <div class="last-updated">
+          <small>Última actualización: {{ manufacturerDetails()!.lastUpdated }}</small>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="not-found-container">
+      <mat-icon class="not-found-icon">search_off</mat-icon>
+      <h2>Fabricante no encontrado</h2>
+      <p>No se pudo encontrar información para el fabricante con ID: {{ manufacturerId() }}</p>
+      <button mat-raised-button color="primary" (click)="goBack()">
+        Volver al listado
+      </button>
+    </div>
+  }
+</div>
