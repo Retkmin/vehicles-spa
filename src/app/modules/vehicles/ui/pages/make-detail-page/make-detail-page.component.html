@@ -25,7 +25,6 @@
           @if ((models?.length ?? 0) === 0) {
             <div class="no-data">
               <h3>{{ 'makeDetail.models.noData.title' | translate }}</h3>
-              <p>{{ 'makeDetail.models.noData.message' | translate: { makeName: makeName } }}</p>
             </div>
           } @else {
             <div class="models-section">
@@ -58,7 +57,6 @@
           @if ((types?.length ?? 0) === 0) {
             <div class="no-data">
               <h3>{{ 'makeDetail.types.noData.title' | translate }}</h3>
-              <p>{{ 'makeDetail.types.noData.message' | translate: { makeName: makeName } }}</p>
             </div>
           } @else {
             <div class="types-section">
