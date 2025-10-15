@@ -1,15 +1,11 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { makesReducer, MakesState } from './makes';
-import { makeDetailReducer, MakeDetailState } from './make-detail';
-
-export interface VehiclesState {
-  makes: MakesState;
-  makeDetail: MakeDetailState;
-}
+import { makesReducer } from './makes';
+import { makeDetailReducer } from './make-detail';
+import { VehiclesState } from './vehicles-state';
 
 export const vehiclesReducers: ActionReducerMap<VehiclesState> = {
   makes: makesReducer,
-  makeDetail: makeDetailReducer
+  makeDetail: makeDetailReducer,
 };
 
 // Export all store modules

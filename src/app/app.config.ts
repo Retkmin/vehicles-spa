@@ -8,7 +8,7 @@ import { provideRouter } from '@angular/router';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { provideHttpClient, HttpClient } from '@angular/common/http';
+import { provideHttpClient, HttpClient, withInterceptors } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -17,6 +17,8 @@ import { environment } from '@environments/environment';
 import { vehiclesReducers } from './modules/vehicles/data-access/store';
 import { MakesEffects } from './modules/vehicles/data-access/store/makes';
 import { MakeDetailEffects } from './modules/vehicles/data-access/store/make-detail';
+import { httpErrorInterceptor } from './core/interceptors/http-error.interceptor';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
@@ -27,7 +29,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([httpErrorInterceptor])),
     provideStore(vehiclesReducers),
     provideEffects([MakesEffects, MakeDetailEffects]),
     importProvidersFrom(
@@ -38,6 +40,7 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient],
         },
       }),
+      MatSnackBarModule,
     ),
     ...(environment.production
       ? []
