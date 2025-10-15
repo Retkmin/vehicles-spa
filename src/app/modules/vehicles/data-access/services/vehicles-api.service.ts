@@ -1,8 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { API_CONFIG } from '@core/config/api.config';
 import { VehicleMake } from '@vehicles/domain/models/vehicle-make.model';
 import { VehicleModel } from '@vehicles/domain/models/vehicle-model.model';
@@ -35,10 +34,6 @@ export class VehiclesApiService {
           makeName: make.Make_Name,
         }));
       }),
-      catchError((error) => {
-        console.warn('Error fetching makes:', error);
-        return of([]);
-      }),
     );
   }
 
@@ -55,10 +50,6 @@ export class VehiclesApiService {
           modelName: model.Model_Name,
         }));
       }),
-      catchError((error) => {
-        console.warn('Error fetching models for make:', error);
-        return of([]);
-      }),
     );
   }
 
@@ -74,10 +65,6 @@ export class VehiclesApiService {
           typeId: type.VehicleTypeId,
           typeName: type.VehicleTypeName,
         }));
-      }),
-      catchError((error) => {
-        console.warn('Error fetching vehicle types for make:', error);
-        return of([]);
       }),
     );
   }

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { getTestConfig } from '@core/utils/test-helpers';
+import { getTestConfig } from '@shared/utils/test-helpers';
 import { provideRouter } from '@angular/router';
 import { VehiclesUiCardComponent } from '@shared/components/vehicles-ui-card/vehicles-ui-card.component';
 import { MakesPageComponent } from './makes-page.component';

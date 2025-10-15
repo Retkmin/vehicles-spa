@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { VehiclesApiService } from './vehicles-api.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { API_CONFIG } from '@core/config/api.config';
-import { getTestConfig } from '@core/utils/test-helpers';
+import { getTestConfig } from '@shared/utils/test-helpers';
 
 describe('VehiclesApiService', () => {
   let service: VehiclesApiService;
@@ -12,9 +12,6 @@ describe('VehiclesApiService', () => {
     TestBed.configureTestingModule(getTestConfig([HttpClientTestingModule], [], undefined));
     service = TestBed.inject(VehiclesApiService);
     httpMock = TestBed.inject(HttpTestingController);
-    jest.spyOn(console, 'warn').mockImplementation(() => {
-      /* intentionally silenced for test */
-    });
   });
 
   afterEach(() => {
@@ -43,14 +40,6 @@ describe('VehiclesApiService', () => {
     req.flush(mockResponse);
   });
 
-  it('should handle error and return empty array for getAllMakes', () => {
-    service.getAllMakes().subscribe((makes) => {
-      expect(makes).toEqual([]);
-    });
-    const req = httpMock.expectOne(`${API_CONFIG.NHTSA.BASE_URL}/GetAllMakes?format=json`);
-    req.error(new ErrorEvent('Network error'));
-  });
-
   it('should fetch models for a make', () => {
     const mockResponse = {
       Results: [
@@ -71,16 +60,6 @@ describe('VehiclesApiService', () => {
     req.flush(mockResponse);
   });
 
-  it('should handle error and return empty array for getModelsForMake', () => {
-    service.getModelsForMake('Toyota').subscribe((models) => {
-      expect(models).toEqual([]);
-    });
-    const req = httpMock.expectOne(
-      `${API_CONFIG.NHTSA.BASE_URL}/GetModelsForMake/Toyota?format=json`,
-    );
-    req.error(new ErrorEvent('Network error'));
-  });
-
   it('should fetch vehicle types for a make', () => {
     const mockResponse = {
       Results: [
@@ -99,15 +78,5 @@ describe('VehiclesApiService', () => {
     );
     expect(req.request.method).toBe('GET');
     req.flush(mockResponse);
-  });
-
-  it('should handle error and return empty array for getVehicleTypesForMake', () => {
-    service.getVehicleTypesForMake('Toyota').subscribe((types) => {
-      expect(types).toEqual([]);
-    });
-    const req = httpMock.expectOne(
-      `${API_CONFIG.NHTSA.BASE_URL}/GetVehicleTypesForMake/Toyota?format=json`,
-    );
-    req.error(new ErrorEvent('Network error'));
   });
 });

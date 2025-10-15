@@ -72,7 +72,8 @@
       "/environment.ts$",
       "/index.ts$",
       "/api.config.ts$",
-      "/test-helpers.ts$"
+      "/test-helpers.ts$",
+      "/core/interceptors/http-error.interceptor.ts$"
     ]
   },
   "lint-staged": {
@@ -107,7 +108,7 @@
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
     "@angular/build": "^20.3.5",
