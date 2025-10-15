@@ -17,7 +17,6 @@ export class MakesEffects {
         this.vehiclesApiService.getAllMakes().pipe(
           map((makes) => MakesActions.loadMakesSuccess({ makes })),
           catchError((error) => {
-            console.warn('Error loading makes:', error);
             return of(
               MakesActions.loadMakesFailure({
                 error: error?.message || 'Failed to load makes',
@@ -36,7 +35,6 @@ export class MakesEffects {
         this.vehiclesApiService.getAllMakes().pipe(
           map((makes) => MakesActions.loadMakesSuccess({ makes })),
           catchError((error) => {
-            console.warn('Error loading more makes:', error);
             return of(
               MakesActions.loadMakesFailure({
                 error: error?.message || 'Failed to load more makes',

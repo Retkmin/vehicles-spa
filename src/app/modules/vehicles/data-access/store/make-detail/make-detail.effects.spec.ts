@@ -16,16 +16,12 @@ const mockMakesState = {
 };
 
 describe('MakeDetailEffects', () => {
-  let consoleWarnSpy: jest.SpyInstance;
   let actions$: Observable<Action>;
   let effects: MakeDetailEffects;
   let vehiclesApiService: jest.Mocked<VehiclesApiService>;
   let store: Partial<Store<unknown>>;
 
   beforeEach(() => {
-    consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {
-      /* intentionally silenced for test */
-    });
     vehiclesApiService = {
       getModelsForMake: jest.fn(),
       getVehicleTypesForMake: jest.fn(),
@@ -43,10 +39,6 @@ describe('MakeDetailEffects', () => {
       ],
     });
     effects = TestBed.inject(MakeDetailEffects);
-  });
-
-  afterEach(() => {
-    consoleWarnSpy.mockRestore();
   });
 
   describe('loadMakeDetail$', () => {
