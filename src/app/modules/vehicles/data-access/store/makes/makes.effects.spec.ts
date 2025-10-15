@@ -12,7 +12,6 @@ describe('MakesEffects', () => {
   let actions$: Observable<Action>;
   let effects: MakesEffects;
   let vehiclesApiService: jest.Mocked<VehiclesApiService>;
-  let consoleWarnSpy: jest.SpyInstance;
 
   beforeEach(() => {
     vehiclesApiService = {
@@ -27,13 +26,6 @@ describe('MakesEffects', () => {
       ],
     });
     effects = TestBed.inject(MakesEffects);
-    consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {
-      /* intentionally silenced for test */
-    });
-  });
-
-  afterEach(() => {
-    consoleWarnSpy.mockRestore();
   });
 
   describe('loadMakes$', () => {

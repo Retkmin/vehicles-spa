@@ -21,7 +21,6 @@ export class MakeDetailEffects {
           makesState.makes.find(
             (m: { makeId: number; makeName: string }) => m.makeId === action.makeId,
           )?.makeName || '';
-        console.warn('[MakeDetailEffect] Calling getModelsForMake with:', makeName);
         return this.vehiclesApiService.getModelsForMake(makeName).pipe(
           map((models) => MakeDetailActions.loadModelsSuccess({ models })),
           catchError((error) =>
@@ -45,7 +44,6 @@ export class MakeDetailEffects {
           makesState.makes.find(
             (m: { makeId: number; makeName: string }) => m.makeId === action.makeId,
           )?.makeName || '';
-        console.warn('[MakeDetailEffect] Calling getVehicleTypesForMake with:', makeName);
         return this.vehiclesApiService.getVehicleTypesForMake(makeName).pipe(
           map((types) => MakeDetailActions.loadTypesSuccess({ types })),
           catchError((error) =>
