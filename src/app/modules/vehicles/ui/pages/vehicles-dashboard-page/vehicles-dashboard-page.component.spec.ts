@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { VehiclesDashboardPageComponent } from './vehicles-dashboard-page.component';
-import { getTestConfig } from '@core/utils/test-helpers';
+import { getTestConfig } from '@shared/utils/test-helpers';
 import { provideRouter } from '@angular/router';
 
 describe('VehiclesDashboardPageComponent', () => {

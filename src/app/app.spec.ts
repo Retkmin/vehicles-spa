@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
-import { getTestConfig } from './core/utils/test-helpers';
+import { getTestConfig } from '@shared/utils/test-helpers';
 
 describe('App', () => {
   beforeEach(async () => {

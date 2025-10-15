@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { VehiclesApiService } from './vehicles-api.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { API_CONFIG } from '@core/config/api.config';
-import { getTestConfig } from '@core/utils/test-helpers';
+import { getTestConfig } from '@shared/utils/test-helpers';
 
 describe('VehiclesApiService', () => {
   let service: VehiclesApiService;

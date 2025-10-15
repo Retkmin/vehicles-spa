@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { VehiclesUiCardComponent } from './vehicles-ui-card.component';
-import { getTestConfig } from '@core/utils/test-helpers';
+import { getTestConfig } from '@shared/utils/test-helpers';
 
 describe('VehiclesUiCardComponent', () => {
   let component: VehiclesUiCardComponent;
